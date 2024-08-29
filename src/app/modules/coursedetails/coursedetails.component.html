@@ -1,0 +1,122 @@
+<div class="m-b-30" id="view">
+    <section *ngIf="!tables">
+         <h4 class="m-0 p-b-10">{{res}} - course Details</h4>
+         <mat-table [dataSource]="dataSource"> 
+            <ng-container matColumnDef="code">
+                <mat-header-cell *matHeaderCellDef fxFlex="20"> Course Code </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index" fxFlex="20"><span class="mobileview">Course Code</span> {{element.courseCode}} </mat-cell>
+              </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef fxFlex="30">Course Name</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="30"><span class="mobileview">Course Name</span> {{element.courseName}} </mat-cell>
+              </ng-container>
+            <ng-container matColumnDef="type">
+                <mat-header-cell *matHeaderCellDef fxFlex="35">Course Type</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="35"><span class="mobileview">Course merge_type</span> {{element.type}} </mat-cell>
+              </ng-container>
+            <ng-container matColumnDef="sem">
+                <mat-header-cell *matHeaderCellDef fxFlex="15">Semester</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="15">{{element.sem}}</mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="credit">
+                <mat-header-cell *matHeaderCellDef fxFlex="15">Credits</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="15"><span class="mobileview">Credits</span><span class="bg-warning fs-16 badge">4 <mat-icon class="mat-12 m-l-6">more_vert</mat-icon></span></mat-cell>
+              </ng-container>
+               <ng-container matColumnDef="outcome">
+                <mat-header-cell *matHeaderCellDef fxFlex="15">Course Outcome</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="15"><span class="mobileview">Course Outcome</span> <span class="bg-success fs-16 badge">5 <mat-icon class="mat-12 m-l-6">more_vert</mat-icon></span></mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="evaluation">
+                <mat-header-cell *matHeaderCellDef fxFlex="15">Evaluation</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="15"><span class="mobileview">Evaluation</span><mat-icon class="mat-18" (click)="barchart(element)">bar_chart</mat-icon></mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="obe">
+                <mat-header-cell *matHeaderCellDef fxFlex="15">OBE Report</mat-header-cell>
+                <mat-cell *matCellDef="let element" fxFlex="15"><span class="mobileview">OBE Report</span><mat-icon class="mat-18" (click)="barchart(element)">pie_chart</mat-icon></mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;" class="cr-pointer"></mat-row>
+             
+            </mat-table>
+            
+    </section>
+    <section *ngIf="tables" fxLayout="column">
+        <div fxLayout="row" fxFlex="100" class="m-b-15">  
+            <div fxLayout="row" fxLayoutAlign="start center" class="g-5" fxFlex="50">
+                <button mat-button class="mat-Btn" (click)="back()"><mat-icon
+                    class="mat-18">keyboard_arrow_left</mat-icon></button>
+                    <header>Course Evaluation Report</header>
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end center">
+                <button mat-button class="obe_btn text-primary" (click)="courseTab()">
+                   OBE Evaluation Report</button>
+            </div>
+        </div>
+        <div fxLayout="row wrap" class="layOut" class="rg-10">
+            <section class="box"  fxLayout="row wrap" fxLayout.gt-md="column" fxFlex="100" fxFlex.gt-md="30">
+                <div fxLayout="column" class="conts" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Course Code</span>
+                    <span class="fs-13">{{this.courseCode}}   </span>
+                </div>
+                <div fxLayout="column" class="conts" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Course Name</span>
+                    <span class="fs-13">{{this.name}}</span>
+                </div>
+                <div fxLayout="column" class="conts" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Course Type</span>
+                    <span class="fs-13">{{this.type}}</span>
+                </div>
+                <div fxLayout="column" class="conts" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Course Period</span>
+                    <span class="fs-13">Semester - {{this.sem}}</span>
+                </div>
+                 <div fxLayout="column" class="conts rg-4" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Credits (4)</span>
+                    <span class="fs-13">Lecture - {{this.Lecture}}</span>
+                    <span class="fs-13">Tutorial - {{Tutorial}}</span>
+                    <span class="fs-13">Partical - {{Practical}}</span>
+                    <span class="fs-13">project - {{Project}}</span>
+                </div>
+                <div fxLayout="column" class="conts" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Course Outcome (COs)</span>
+                    <span fxLayout="row wrap" class="g-5 m-t-2">
+                        <span *ngFor="let items of this.cos" >
+                            <span class="bg-success text-white fs-13 badge">{{items.title}}</span>
+                        </span>
+                    </span>
+                </div>
+                  <div fxLayout="column" class="conts" fxFlex.lt-md="100" fxFlex.lt-lg="14">
+                    <span class="title">Mapped to this Course</span>
+                    <span fxLayout="row wrap" class="g-5 m-t-2">
+                        <span *ngFor="let item of evaluation">
+                            <span class="bg-primary text-white fs-13 badge">{{item}}</span>
+                        </span>
+                    </span>
+                </div>
+            </section>
+            <section fxFlex="100" fxFlex.gt-md="65" class=" m-l-5">
+                <div fxLayout="row" class="g-10">
+                    <div class="box_det">
+                        <p>Total Students<span class="fs-18 p-l-10">{{this.studend}}</span></p>
+                    </div>
+                    <div class="box_det">
+                        <p>Course Average Mark<span class="fs-18 p-l-10">{{mark}}%</span></p>
+                    </div>
+                </div>
+                <div *ngIf="course">
+                   <app-chartdata [childData]="chart"></app-chartdata>
+                </div>
+                 <div *ngIf="course">
+                     <app-chartdata [childData]="linechart"></app-chartdata>
+                 </div>
+
+                 <!-- <section *ngIf="!course">
+                    <app-chartdata [childData]="pie"></app-chartdata>
+                 </section> -->
+            </section>
+        </div>
+        
+    </section>
+</div>
+
+

@@ -1,0 +1,19 @@
+<div class="main-container"> 
+    <mat-toolbar  class="topbar telative">
+        <button mat-icon-button (click)="toggleSidebar()" value="sidebarclosed">
+            <mat-icon>menu</mat-icon>
+        </button>
+        
+        <app-header class="d-flex align-items-center ml-auto" fxFlex="100"></app-header>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-sidenav-container sideBar" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+        <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'" fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches"  >
+                <app-sidenav></app-sidenav>
+        </mat-sidenav>
+        <mat-sidenav-content class="page-wrapper">
+                <div class="page-content">
+                <router-outlet></router-outlet>
+                </div>    
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

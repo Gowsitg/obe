@@ -1,0 +1,44 @@
+#viewtwo {
+    .profile_card ,.cards{
+        box-shadow: 1px 2px 7px -2px rgba(0, 0, 0, 0.89);
+        padding: 10px;
+    }
+    
+    #progreed {
+    .mat-mdc-progress-bar {
+        height: 20px !important;
+        border-radius: 4px;
+    
+        .mdc-linear-progress__buffer {
+            height: 100% !important;
+           
+        }
+        .mdc-linear-progress__bar {
+            height: 100% !important;
+        }
+        .mdc-linear-progress__bar-inner {
+            border-top-width: 20px !important
+        }
+    
+    }
+    }
+    
+    .mat-mdc-table mat-row.mat-mdc-row {
+        &:hover {
+            background-color: #f8f8f8;
+        }
+    }
+    
+    .view {
+        color: #ffffff !important;
+        background-color: #242F40 !important;
+        min-height: 40px !important;
+    }
+     
+    .mat-mdc-cell {
+        &.newrow {
+            display: block !important;
+        }
+    }
+    
+}

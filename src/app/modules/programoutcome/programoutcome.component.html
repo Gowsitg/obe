@@ -1,0 +1,46 @@
+<div id="outcome">
+    <div class="source">
+        <h4 class="m-0 pd-10">Program Outcomes</h4>
+        <mat-accordion >
+            <mat-expansion-panel #panel *ngFor="let item of this.org" (opened)="onPanelOpened(item)">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="g-5"><span class="expan_badge">{{item.title}}</span><span>Evaluation <span> {{item.evaluation}} out of 12</span></span></mat-panel-title>
+                  <mat-panel-description fxLayout="column">
+                    <span class="m-t-10 text-secondary fs-15">{{item.poTitle}}</span>
+                    <div fxLayout="row" class="m-t-10" style="width: 100%;" fxLayoutGap="15px" fxLayoutAlign="start center" >
+                        <mat-progress-bar fxFlex="70" mode="determinate" [value]="item.percentage"></mat-progress-bar>
+                        <span class="text">{{item.percentage}}%</span>
+                      </div>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                  <p class="m-0 text-warning fs-17 p-t-20">Description</p>
+                  <span class="m-t-8 fs-15 text-secondary">{{item.description}}</span>
+                  <p class="fs-14">PEOs Mapped</p>
+                  <span>{{item.mapped}}</span>  
+              </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

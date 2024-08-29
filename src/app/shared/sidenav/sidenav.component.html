@@ -1,0 +1,9 @@
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected">
+        <button class="nav_btn" appAccordionToggle (click)="goto(menuitem.state)" >
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span class="menu_items">{{ menuitem.name }}</span>
+            <span fxFlex></span>
+        </button>
+    </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,99 @@
+
+<div id="separate" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="m-b-20">
+    <div fxLayout="row" class="g-6" fxLayoutAlign="center start">
+     <h4 class="m-0 fs-20">Programs</h4>
+     <mat-form-field appearance="outline">
+         <input type="text" matInput placeholder="search">
+         <mat-icon class="mat-18" matSuffix>search</mat-icon>
+     </mat-form-field>
+    </div>
+    <div>
+     <mat-button-toggle-group [(ngModel)]="selectsection" 
+     (change)="sectionChange($event)">
+       <mat-button-toggle value="2"><mat-icon class="mat-18">apps</mat-icon></mat-button-toggle>
+       <mat-button-toggle value="1"><mat-icon>menu</mat-icon></mat-button-toggle>
+     </mat-button-toggle-group>
+    </div>
+ </div>
+ <section *ngIf="selectsection == 1">
+     <mat-table [dataSource]="dataSource"> 
+         <ng-container matColumnDef="code">
+             <mat-header-cell *matHeaderCellDef fxFlex="20"> Program Code </mat-header-cell>
+             <mat-cell *matCellDef="let element; let i = index" fxFlex="20"><span class="mobileview">Program Code</span> {{element.code}} </mat-cell>
+           </ng-container>
+         <ng-container matColumnDef="name">
+             <mat-header-cell *matHeaderCellDef fxFlex="30">Program Name</mat-header-cell>
+             <mat-cell *matCellDef="let element" fxFlex="30"><span class="mobileview">Program Name</span> {{element.name}} </mat-cell>
+           </ng-container>
+         <ng-container matColumnDef="attainment">
+             <mat-header-cell *matHeaderCellDef fxFlex="35">Program Attainment</mat-header-cell>
+             <mat-cell *matCellDef="let element" fxFlex="35"> <span class="mobileview">Attainment</span>
+               <span fxLayout="row" class="g-5 progress" ><mat-progress-bar mode="determinate" value={{element.attainment}}></mat-progress-bar>
+               <span fxLayout="row" style="width: 20%;">{{element.attainment}} %</span></span></mat-cell>
+           </ng-container>
+         <ng-container matColumnDef="status">
+             <mat-header-cell *matHeaderCellDef fxFlex="15">Status</mat-header-cell>
+             <mat-cell *matCellDef="let element" fxFlex="15"><span class="mobileview">Status</span> <span class="badge bg-red text-white" *ngIf="element.status == 1"><span class="fs-28">&#x2022;</span> Live</span> <span class="badge text-white bg-primary" *ngIf="element.status == 2">Draft</span></mat-cell>
+           </ng-container>
+           
+           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+           <mat-row *matRowDef="let row; columns: displayedColumns;" class="cr-pointer" (click)="courseview(row.code)"></mat-row>
+          
+         </mat-table>
+         
+ </section>
+ 
+ <section *ngIf="selectsection == 2" class="">
+       <div fxLayout="row wrap" fxLayoutAlign="center start" class="g-20 rg-40 m-b-40">
+         <div *ngFor="let element of statsdata" fxFlex.gt-xs="40" fxFlex.gt-sm="30" fxFlex.gt-md="31">
+           <div class="program_card cr-pointer" fxLayout="column" (click)="courseview(element.code)">
+              <div class="img_section pd-10" fxLayout="column">
+                  <img src="assets/images/{{element.img}}" alt="prof">
+                  <span class="badge bg-red text-white"><span class="fs-28" *ngIf="element.status == 1">&#x2022;</span>Live</span>
+                  <span class="badge bg-primary text-white" *ngIf="element.status == 2">Draft</span>
+              </div>
+              <div class="title">
+               <h4 class="p-l-10 p-r-10">{{element.name}}</h4>
+ 
+              </div>
+              <mat-divider [vertical]="false"></mat-divider>
+ 
+              <div fxLayout="row wrap"  class="g-10"  fxLayoutAlign="space-between center">
+                 <div fxFlex="30" class="cardfoot">
+                  <h4 class="p-l-10">{{element.code}}</h4>
+                 </div>
+                 <!-- <mat-divider [vertical]="true"></mat-divider> -->
+ 
+                <div fxLayout="row nowrap" fxFlex="65" fxLayoutAlign="space-between center" class="p-r-10 g-2 ">
+                 
+                  <span>Program Attainment</span>
+                    <circle-progress
+                    [percent]="element.attainment"
+    [radius]="20"
+    [outerStrokeWidth]="8"
+    [space]="-8"
+    [innerStrokeWidth]="8"
+    [outerStrokeColor]="'#2E6995'"
+    [innerStrokeColor]="'#e0e0e0'"
+    [animation]="true"
+    [animationDuration]="300"
+    [showTitle]="true"
+    [showSubtitle]="false"
+    [showUnits]="true"
+    [showBackground]="true"
+    [showInnerStroke]="true"
+    [clockwise]="true"
+    [responsive]="false"
+    [startFromZero]="true"
+    [showZeroOuterStroke]="true"
+    [units]="'%'"
+    [unitsFontSize]="'10px'">
+                  </circle-progress>
+                 </div>
+              </div>
+           </div>
+      </div>
+       </div>
+ </section>
+</div>

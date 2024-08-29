@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" id="header" fxFlex="100"> 
+    <div class="navbar-header">
+        <img src="assets/images/header.jpeg"  ngClass.lt-sm="hided" alt="homepage" class="dark-logo">
+        <div fxLayout="row" class="g-8">
+            <mat-divider [vertical]="true" class="m-l-8 hided"></mat-divider>
+
+            <mat-icon class="mat-18 hided" >location_city</mat-icon>
+            <mat-divider [vertical]="true" class="hided"></mat-divider>
+
+            <mat-select [(value)]="selectedCity" ngClass.lt-md="m-l-6">
+                <mat-option [value]="1">Chennai</mat-option>
+                <mat-option [value]="2">Bangalore</mat-option>
+                <mat-option [value]="3">Delhi</mat-option>
+              </mat-select>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center" class="g-13">
+        <mat-form-field appearance="outline" class="hided">
+            <input matInput placeholder="search" type="text" >
+        <mat-icon class="mat-18" matPrefix>search</mat-icon>
+        <mat-icon class="mat-18" matSuffix>mic_none</mat-icon>
+        </mat-form-field>
+        <div >
+            <h5 class="fs-14">William</h5>
+            <span class="fs-12">Super ADmin</span>    
+        </div>
+        <button [matMenuTriggerFor]="profile" mat-icon-button  class="m-r-5 p-0 d-flex jc-c profile_button align-items-center"> 
+            <img src="assets/images/user.jpg" alt="user" class="profile-pic">
+        </button>
+            <mat-menu #profile="matMenu" class="mymegamenu">
+                <button mat-menu-item>
+                    <mat-icon>settings</mat-icon> Settings </button>
+                <button mat-menu-item>
+                    <mat-icon>account_box</mat-icon> Profile </button>
+                <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon> Disable notifications </button>
+                <button mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon> Sign Out </button>
+            </mat-menu>
+    </div>
+    
+    
+</div>

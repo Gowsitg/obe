@@ -1,0 +1,116 @@
+#separate {
+    .mat-mdc-progress-bar {
+        height: 20px !important;
+        border-radius: 4px;
+    
+        .mdc-linear-progress__buffer {
+            height: 100% !important;
+           
+        }
+        .mdc-linear-progress__bar {
+            height: 100% !important;
+        }
+        .mdc-linear-progress__bar-inner {
+            border-top-width: 20px !important
+        }
+    
+    }
+    
+    .mat-mdc-table mat-row.mat-mdc-row {
+        &:hover {
+            background-color: #f8f8f8;
+        }
+    }
+    
+    .badge {
+        padding: 0px 10px;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        height: 27px;
+    }
+    .progress {
+        width: 100%;
+    }
+    @media (max-width: 768px) {
+        .mat-mdc-table {
+          display: block; 
+    
+          mat-header-row {
+            display: none !important;
+          }
+    
+          mat-row {
+            display: block !important; 
+            margin-bottom: 1rem; 
+            padding: 4px 0;
+            border-bottom: 1.2px solid #C6C6C6 !important;
+          }
+    
+          mat-cell {
+            display: block; 
+            // flex-direction: column;
+            position: relative;
+            max-width: 100% !important;
+            border: none !important;
+            &:first-of-type {
+                padding-left: 16px !important;
+            }
+          }
+          .mobileview {
+            display: block !important;
+            font-weight: 600;
+            padding: 4px  0;
+          }
+          .badge {
+            display: inline-flex;
+          }
+        }
+    }
+    
+    .mobileview {
+        display: none;
+    }
+    
+    .program_card {
+        // max-width: 320px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    
+        &:hover {
+            background-color: #f9f9f9;
+        }
+    
+    .img_section {
+        position: relative;
+        img {
+            border-radius: 6px;
+            height: 130px;
+        }
+         
+        .badge{
+            position: absolute;
+            right: 17px;
+            bottom: 18px;
+            padding: 0 10px;
+        }
+        
+    }    
+    .cardfoot {
+        border-right: 1px solid #C6C6C6;
+    }
+    .title {
+        height: 80px;
+        h4 {
+            margin: 0 ;
+        }
+    }
+    
+    
+    }
+    
+    .mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+        color: #ffffff !important;
+        background-color: #2E6995 !important;
+    }
+}

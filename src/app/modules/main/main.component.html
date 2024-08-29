@@ -1,0 +1,39 @@
+<div class="main">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <div fxLayout="row wrap" class="g-8" fxLayoutAlign="start center">
+            <button mat-button class="mat-Btn" (click)="navi(1)"><mat-icon
+                    class="mat-18">keyboard_arrow_left</mat-icon>Programs</button>
+                     <button mat-button class="mat-Btn" (click)="navi(2)"><mat-icon
+                    class="mat-18">keyboard_arrow_left</mat-icon>{{finaldata.name}}</button>
+            <h4 class="m-0 fs-18">Detailed Overview</h4>
+        </div>
+        <div fxLayoutAlign="end center" class="g-9">
+            <mat-icon class="mat-18">people_outline</mat-icon>
+            <mat-select [(ngModel)]="years" class="mat_select">
+                <mat-option [value]="1">2023 - 2025</mat-option>
+                <mat-option [value]="2">2024 - 2027</mat-option>
+                <mat-option [value]="3">2021 - 2022</mat-option>
+            </mat-select>
+        </div>
+    </div>
+
+    <div class="m-t-20">
+        <h4 class="fs-18">Program Education Objectives (PEOs)</h4>
+        <mat-button-toggle-group fxLayout="row wrap" >
+            <mat-button-toggle value="all" fxFlex="70px" (click)="onToggleChange(1)" style="text-align: center;">All</mat-button-toggle>
+            <mat-button-toggle  (click)="onToggleClick(item)" *ngFor="let item of this.thirdData.coursecode; let i = index" value="item.title" fxFlex="200px" style="text-align: start;border: none">
+                 <p class="m-0 lh-0 fs-14 text-greys"><span>{{item.title}}</span><mat-icon class="mat-18 text-primary" matTooltip="{{item.description}}"
+                  >message icon</mat-icon></p>
+                <span class="fs-16">{{item.subtitle}}</span>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+    </div>
+    <div class="m-t-20 g-10" fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.gt-md="25">
+            <app-programoutcome  (triggerFunction)="parentFunction($event)"></app-programoutcome>
+        </div>
+        <div fxFlex="100" fxFlex.gt-md="73">
+            <app-coursedetails></app-coursedetails>
+        </div>
+    </div>
+</div>
